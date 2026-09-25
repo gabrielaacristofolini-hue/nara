@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nara — Psicóloga</title>
+<meta name="description" content="Nara, psicóloga clínica. Atendimento presencial e online para adultos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #EEF1EC;
+    --papel: #F8FAF6;
+    --tinta: #1F2A2E;
+    --pinho: #2F4F4A;
+    --lavanda: #B9A9D6;
+    --suave: #5D6B69;
+    --linha: #D5DCD4;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--fundo);
+    color: var(--tinta);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--pinho); outline-offset: 3px; border-radius: 4px; }
+  .container { width: min(1080px, 100% - 3rem); margin-inline: auto; }
+
+  /* Cabeçalho */
+  header { padding: 1.5rem 0; }
+  header .container { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .marca { font-family: var(--serif); font-size: 1.5rem; text-decoration: none; }
+  .marca small { font-family: var(--sans); font-size: .85rem; color: var(--suave); margin-left: .4rem; }
+  nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  nav a { text-decoration: none; font-size: .95rem; color: var(--suave); }
+  nav a:hover { color: var(--tinta); }
+
+  /* Hero */
+  .hero { padding: 4rem 0 6rem; }
+  .hero .container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    max-width: 16ch;
+  }
+  .hero p { margin-top: 1.5rem; max-width: 46ch; color: var(--suave); font-size: 1.15rem; }
+  .botoes { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: .85rem 1.6rem; border-radius: 999px;
+    text-decoration: none; font-weight: 500; font-size: 1rem;
+  }
+  .btn-principal { background: var(--pinho); color: var(--papel); }
+  .btn-principal:hover { background: var(--tinta); }
+  .btn-secundario { border: 1px solid var(--pinho); color: var(--pinho); }
+  .btn-secundario:hover { background: var(--papel); }
+
+  /* Círculo que "respira" */
+  .respiro { display: grid; place-items: center; aspect-ratio: 1; position: relative; }
+  .respiro .circulo {
+    width: 80%; aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #D6CCE8, var(--lavanda) 60%, #9C8BC0);
+    animation: respirar 8s ease-in-out infinite;
+  }
+  .respiro .anel {
+    position: absolute; width: 95%; aspect-ratio: 1; border-radius: 50%;
+    border: 1px solid var(--linha);
+  }
+  .respiro span {
+    position: absolute; font-family: var(--serif); font-style: italic;
+    color: var(--tinta); font-size: 1.1rem;
+  }
+  @keyframes respirar {
+    0%, 100% { transform: scale(.82); }
+    50% { transform: scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .respiro .circulo { animation: none; transform: scale(.92); }
+    html { scroll-behavior: auto; }
+  }
+
+  /* Seções */
+  section { padding: 5rem 0; }
+  h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.9rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 1.5rem;
+  }
+  .sobre { background: var(--papel); }
+  .sobre .container { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; }
+  .sobre p { font-family: var(--serif); font-size: 1.2rem; line-height: 1.75; max-width: 60ch; }
+  .sobre p + p { margin-top: 1rem; }
+  .credenciais { margin-top: 1.5rem; color: var(--suave); font-size: .95rem; }
+
+  .temas ul { list-style: none; display: flex; flex-wrap: wrap; gap: .75rem; max-width: 800px; }
+  .temas li {
+    padding: .55rem 1.1rem; border: 1px solid var(--linha);
+    border-radius: 999px; background: var(--papel); font-size: .98rem;
+  }
+
+  .atendimento .container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+  .atendimento h3 { font-family: var(--serif); font-weight: 500; font-size: 1.5rem; margin-bottom: .5rem; }
+  .atendimento p { color: var(--suave); max-width: 44ch; }
+  .atendimento .intro { grid-column: 1 / -1; }
+
+  .duvidas { background: var(--papel); }
+  details { border-bottom: 1px solid var(--linha); padding: 1.2rem 0; max-width: 760px; }
+  summary { cursor: pointer; font-weight: 500; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+  summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--pinho); }
+  details[open] summary::after { content: "−"; }
+  details p { margin-top: .75rem; color: var(--suave); max-width: 62ch; }
+
+  .contato { background: var(--pinho); color: var(--papel); text-align: center; }
+  .contato p { color: #CFE0DC; max-width: 48ch; margin: 0 auto 2rem; }
+  .contato .btn-principal { background: var(--lavanda); color: var(--tinta); }
+  .contato .btn-principal:hover { background: var(--papel); }
+  .contato .info { margin-top: 2rem; font-size: .95rem; color: #CFE0DC; }
+
+  footer { padding: 2rem 0; font-size: .9rem; color: var(--suave); }
+  footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+
+  @media (max-width: 800px) {
+    .hero { padding: 2rem 0 4rem; }
+    .hero .container, .sobre .container, .atendimento .container { grid-template-columns: 1fr; }
+    .respiro { max-width: 320px; margin: 0 auto; }
+    section { padding: 3.5rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="#" class="marca">Nara<small>Psicóloga</small></a>
+    <nav aria-label="Principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#atendimento">Atendimento</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div>
+        <h1>Um espaço para você falar sem pressa.</h1>
+        <p>Psicoterapia para adultos que querem entender melhor o que sentem e encontrar novas formas de lidar com a vida. Atendimento presencial e online.</p>
+        <div class="botoes">
+          <a class="btn btn-principal" href="#contato">Agendar uma conversa</a>
+          <a class="btn btn-secundario" href="#sobre">Conhecer meu trabalho</a>
+        </div>
+      </div>
+      <div class="respiro" aria-hidden="true">
+        <div class="anel"></div>
+        <div class="circulo"></div>
+        <span>respire</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sobre" id="sobre">
+    <div class="container">
+      <h2>Sobre mim</h2>
+      <div>
+        <p>Sou a Nara, psicóloga clínica. Acredito que a terapia é um encontro: um lugar seguro, sem julgamentos, onde você pode olhar para a sua história com cuidado e no seu tempo.</p>
+        <p>Meu trabalho é acompanhar você nesse processo, ajudando a dar nome ao que dói e a construir caminhos mais leves para o dia a dia.</p>
+        <p class="credenciais">CRP 00/00000 · Formação em [sua abordagem] · [Sua especialização]</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="temas">
+    <div class="container">
+      <h2>Com o que posso ajudar</h2>
+      <ul>
+        <li>Ansiedade</li>
+        <li>Tristeza e desânimo</li>
+        <li>Autoestima</li>
+        <li>Relacionamentos</li>
+        <li>Luto</li>
+        <li>Estresse no trabalho</li>
+        <li>Mudanças e transições de vida</li>
+        <li>Autoconhecimento</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="atendimento" id="atendimento">
+    <div class="container">
+      <h2 class="intro">Como funciona o atendimento</h2>
+      <div>
+        <h3>Presencial</h3>
+        <p>No consultório, em [bairro, cidade]. Sessões semanais de 50 minutos, em um ambiente tranquilo e reservado.</p>
+      </div>
+      <div>
+        <h3>Online</h3>
+        <p>Por videochamada, de onde você estiver. Mesmo cuidado e sigilo do atendimento presencial, com mais flexibilidade de horário.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="duvidas" id="duvidas">
+    <div class="container">
+      <h2>Dúvidas frequentes</h2>
+      <details>
+        <summary>Como sei se preciso de terapia?</summary>
+        <p>Não é preciso estar em crise para começar. Se algo tem pesado, se você quer se conhecer melhor ou atravessar uma fase difícil com apoio, a terapia pode ajudar.</p>
+      </details>
+      <details>
+        <summary>Quanto tempo dura o processo?</summary>
+        <p>Depende de cada pessoa e do que ela busca. Conversamos sobre isso ao longo do caminho, sempre com transparência.</p>
+      </details>
+      <details>
+        <summary>O que é falado na sessão fica em sigilo?</summary>
+        <p>Sim. O sigilo é garantido pelo Código de Ética Profissional do Psicólogo, tanto no atendimento presencial quanto no online.</p>
+      </details>
+      <details>
+        <summary>Você atende por convênio?</summary>
+        <p>[Informe aqui se atende convênios ou apenas particular, e se emite recibo para reembolso.]</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="contato" id="contato">
+    <div class="container">
+      <h2>Vamos conversar?</h2>
+      <p>Mande uma mensagem para tirar dúvidas ou agendar sua primeira sessão. Respondo o mais breve possível.</p>
+      <a class="btn btn-principal" href="https://wa.me/5500000000000" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      <p class="info">contato@psicologanara.com.br · (00) 00000-0000</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <span>© 2026 Nara — Psicóloga · CRP 00/00000</span>
+    <span>Em caso de emergência, ligue para o CVV: 188</span>
+  </div>
+</footer>
+
+</body>
+</html>
